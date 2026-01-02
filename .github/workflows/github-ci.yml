@@ -3,7 +3,7 @@ name: Run TAS
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 20 * * *"   # UTC 
+    - cron: "00 21 * * *"   # UTC 
 
 env:
   MAVEN_CLI_OPTS: "-B -V"
