@@ -15,3 +15,9 @@ Run TAS for each SUT:
   ```bash
   mvn test -Pchatapp
   ```
+
+Add environment variable to gitlab.yml
+  ```yaml
+  HEADLESS: "true"
+  ```
+  
