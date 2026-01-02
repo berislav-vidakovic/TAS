@@ -1,6 +1,6 @@
 ## Test Automation Solution (TAS)
 
-This TAS covers 3 System Under test (SUT):
+This TAS covers 3 System Under Test (SUT):
 - WebShop 
 - ChatApp 
 - Games 
