@@ -20,4 +20,8 @@ Add environment variable to gitlab.yml
   ```yaml
   HEADLESS: "true"
   ```
+
+Build scheduled Pipeline on GitLab
+  - Build - Pipeline schedules - New schedule
+
   
