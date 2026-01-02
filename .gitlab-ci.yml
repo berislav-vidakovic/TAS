@@ -5,6 +5,7 @@ stages:
 
 variables:
   MAVEN_CLI_OPTS: "-B -V"
+  HEADLESS: "true"
 
 # Job to run TAS
 run_tas:
