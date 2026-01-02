@@ -13,4 +13,5 @@ run_tas:
   script:
     - mvn test -Pgames
   rules:
-    - when: never  # prevents this job from running automatically on pushes
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: always
