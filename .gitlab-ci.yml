@@ -1,0 +1,15 @@
+image: maven:3.9.4-openjdk-17
+
+stages:
+  - test
+
+variables:
+  MAVEN_CLI_OPTS: "-B -V"
+
+# Job to run TAS
+run_tas:
+  stage: test
+  script:
+    - mvn test -Pgames
+  rules:
+    - when: never  # prevents this job from running automatically on pushes
