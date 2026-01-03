@@ -1,14 +1,33 @@
-image: mcr.microsoft.com/playwright/java:v1.50.0
+image: docker:24
+
+services:
+  - docker:24-dind
 
 stages:
+  - build
   - test
 
 variables:
-  MAVEN_CLI_OPTS: "-B -V"
-  HEADLESS: "true"
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
 
-# Job to run TAS
-run_tas:
-  stage: test
+# ---------------- Build staging Docker image ----------------
+build_staging_env:
+  stage: build
   script:
-    - mvn test -Dtest=GamesTest
+    - echo "Frontend artifacts automatically received from SUT pipeline"
+    # Build Docker image (Dockerfile lives in TAS repo root)
+    - docker build -t webshop-staging-tas .
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+
+# ---------------- Run TAS tests inside container ----------------
+run_tas_in_container:
+  stage: test
+  dependencies:
+    - build_staging_env
+  script:
+    - echo "Running staging container with TAS tests..."
+    - docker run --rm webshop-staging-tas
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
