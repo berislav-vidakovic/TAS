@@ -24,8 +24,8 @@ COPY webshop/dist/ /var/www/webshop/frontend
 # Replace default Nginx config
 COPY webshop/webshop-staging.conf /etc/nginx/sites-available/default
 
-# Copy TAS project
-COPY TAS/ /app/TAS
+# Copy TAS project - all from project root
+COPY . /app/TAS
 WORKDIR /app/TAS
 
 # Install Playwright browsers via Maven
