@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # Copy React frontend into Nginx folder
-COPY webshop/dist/ /var/www/webshop/frontend
+COPY ./dist/ /var/www/webshop/frontend
 
 # Replace default Nginx config
 COPY ./webshop-staging.conf /etc/nginx/sites-available/default
