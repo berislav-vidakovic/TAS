@@ -13,6 +13,7 @@ variables:
 # --Build staging environment Docker image and run TAS against it -------------
 build_staging_env_and_run_tas:
   stage: staging_env_test
+  privileged: true    # required for Docker-in-Docker
   script:
     - echo "Build staging Docker image ...  "
     # GitLab automatically forwards artifacts from SUT pipeline when using `trigger: strategy: depend`
