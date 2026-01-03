@@ -29,7 +29,8 @@ run_tas_in_container:
     - build_staging_env
   script:
     - echo "Running staging container with TAS tests..."
-    # This will start Nginx + mvn test as per your Dockerfile CMD
-    - docker run --rm webshop-staging-tas
+    # Mount SUT artifacts into /var/www/webshop/frontend in container
+    # $CI_PROJECT_DIR/dist contains the dist/ artifacts forwarded from SUT pipeline
+    - docker run --rm -v "$CI_PROJECT_DIR/dist:/var/www/webshop/frontend" webshop-staging-tas
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'

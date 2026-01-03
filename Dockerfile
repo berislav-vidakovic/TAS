@@ -18,8 +18,6 @@ RUN apt-get update && apt-get install -y \
     libx11-xcb1 \
     && apt-get clean
 
-# Copy React frontend into Nginx folder
-COPY ./dist/ /var/www/webshop/frontend
 
 # Replace default Nginx config
 COPY ./webshop-staging.conf /etc/nginx/sites-available/default
