@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
 COPY webshop/dist/ /var/www/webshop/frontend
 
 # Replace default Nginx config
-COPY webshop/webshop-staging.conf /etc/nginx/sites-available/default
+COPY ./webshop-staging.conf /etc/nginx/sites-available/default
 
 # Copy TAS project - all from project root
 COPY . /app/TAS
