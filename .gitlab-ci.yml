@@ -11,7 +11,7 @@ variables:
 run_tas:
   stage: test
   script:
-    - mvn test -Pgames
+    - mvn test -Dtest=GamesTest
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push"'
       when: always
