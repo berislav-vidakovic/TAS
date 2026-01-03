@@ -1,0 +1,27 @@
+name: Run TAS
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"   # UTC 
+
+env:
+  MAVEN_CLI_OPTS: "-B -V"
+  HEADLESS: "true"
+
+jobs:
+  run_tas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Run TAS
+        run: mvn test -Pgames
